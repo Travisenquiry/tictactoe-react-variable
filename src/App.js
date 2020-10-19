@@ -6,16 +6,18 @@ import BoardComponent from './components/Tictactoe/Board/BoardComponent.jsx';
 
 
 const App = () => {
-  return (
-    <div className="container">
-      <NameComponent playerIndex="1"/>
-      <br />
-      <NameComponent playerIndex="2"/>
-      <br />
-      <BoardSizeComponent />
-      <BoardComponent />
-    </div>
-  );
+  
+
+	return (
+		<div className="container">
+			<NameComponent playerIndex="1"/>
+			<br />
+			<NameComponent playerIndex="2"/>
+			<br />
+			<BoardSizeComponent />
+			<BoardComponent />
+		</div>
+	);
 }
 
 export default App;
