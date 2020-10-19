@@ -2,17 +2,19 @@ import React, { useState, useEffect } from 'react';
 import './BoardComponent.css';
 
 const BoardComponent = (props) => {
+
+    //Function to map the board state to create and render it into HTML
     const board = props.board.map( (row,rowIndex) => {
-        // make a single row
+        //Creates a single row
         const rows = row.map( (col,colIndex) => {
-        // make each column
+            //Creates each column
             return (
                 <span className="col" key={colIndex}>
                 [ {col} ] <ln />
                 </span>
             );
         });
-        // return the complete row
+        //Returns the complete row
         return (
           <div key={rowIndex} className="row">
             {rows}
