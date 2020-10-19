@@ -37,7 +37,7 @@ const App = () => {
 				<BoardSizeComponent defaultBoardSize={boardSize} boardSizeOnChangeFunction={onChangeFunction(setBoardSize)}/>
 				<br />
 				<GameStartComponent startGameFunction={startGameFunction}/>
-				<BoardComponent />
+				<BoardComponent boardSize={boardSize}/>
 				</div> 
 				: null 
 			}
