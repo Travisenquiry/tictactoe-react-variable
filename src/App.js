@@ -37,11 +37,11 @@ const App = () => {
 			//Prevents the user from choosing size less than 2 and more than 9
 			if(boardSize > 2 && boardSize < 10) {
 				for(let i=0; i<boardSize; i++) {
-					boardRow.push(boardCol);
+					boardRow.push("-");
 				}
-				let boardNewRow = [...boardRow];
 				for(let i=0; i<boardSize; i++) {
-					boardTemp.push(boardNewRow);
+					let boardCloneRow = [...boardRow];
+					boardTemp.push(boardCloneRow);
 				}
 			}
 		setBoard(boardTemp);
@@ -56,7 +56,6 @@ const App = () => {
             editBoard[row][column] = "x";
         }
 		setBoard(editBoard);
-		console.log(board);
 
 	}		
 
