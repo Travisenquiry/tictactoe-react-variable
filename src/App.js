@@ -1,7 +1,9 @@
 import React from 'react';
 import './App.css';
 import NameComponent from './components/Tictactoe/Option/NameComponent.jsx';
+import BoardSizeComponent from './components/Tictactoe/Option/BoardSizeComponent.jsx';
 import BoardComponent from './components/Tictactoe/Board/BoardComponent.jsx';
+
 
 const App = () => {
   return (
@@ -9,6 +11,8 @@ const App = () => {
       <NameComponent playerIndex="1"/>
       <br />
       <NameComponent playerIndex="2"/>
+      <br />
+      <BoardSizeComponent />
       <BoardComponent />
     </div>
   );
