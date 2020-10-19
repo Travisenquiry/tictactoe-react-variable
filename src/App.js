@@ -59,10 +59,6 @@ const App = () => {
 
 	}		
 
-	useEffect(() => {
-		setBoard(board);
-	}, [board]);
-
 	return (
 		<div className="container">
 			{ gameStarted === "no" ? 
