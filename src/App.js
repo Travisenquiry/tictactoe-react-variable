@@ -2,6 +2,7 @@ import React, {useState} from 'react';
 import './App.css';
 import NameComponent from './components/Tictactoe/Option/NameComponent.jsx';
 import BoardSizeComponent from './components/Tictactoe/Option/BoardSizeComponent.jsx';
+import GameStartComponent from './components/Tictactoe/Option/GameStartComponent.jsx';
 import BoardComponent from './components/Tictactoe/Board/BoardComponent.jsx';
 
 
@@ -24,6 +25,8 @@ const App = () => {
 			<NameComponent playerIndex="2" nameOnChangeFunction={onChangeFunction(setPlayerTwo)}/>
 			<br />
 			<BoardSizeComponent defaultBoardSize={boardSize} boardSizeOnChangeFunction={onChangeFunction(setBoardSize)}/>
+			<br />
+			<GameStartComponent />
 			<BoardComponent />
 		</div>
 	);
