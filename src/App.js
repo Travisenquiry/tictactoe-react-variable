@@ -1,4 +1,4 @@
-import React, {useState, useEffect} from 'react';
+import React, {useState} from 'react';
 import './App.css';
 import NameComponent from './components/Tictactoe/Option/NameComponent.jsx';
 import BoardSizeComponent from './components/Tictactoe/Option/BoardSizeComponent.jsx';
@@ -31,7 +31,6 @@ const App = () => {
 		    //Creates the array required for the board based on the size declared
 			let boardTemp = [];
 			let boardRow = [];
-			let boardCol = "-";
 			
 			//Pushes and create the board based on the board size input
 			//Prevents the user from choosing size less than 2 and more than 9
@@ -47,6 +46,7 @@ const App = () => {
 		setBoard(boardTemp);
 	}
 
+	//Function to be passed into BoardComponent for squares to change symbols
 	const squareClick = (column, row) => {
 		console.log( column, row );
         let editBoard = [...board];
