@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, {useState, useEffect} from 'react';
 import './App.css';
 import NameComponent from './components/Tictactoe/Option/NameComponent.jsx';
 import BoardSizeComponent from './components/Tictactoe/Option/BoardSizeComponent.jsx';
@@ -44,7 +44,24 @@ const App = () => {
 				}
 			}
 		setBoard(boardTemp);
+		console.log(board);
 	}
+
+	const squareClick = (column, row) => {
+        console.log( column, row );
+        let editBoard = board;
+        if(editBoard[row][column] === "-" || editBoard[row][column] === "x"){
+            editBoard[row][column] = "o";
+        }else if(editBoard[row][column] === "o"){
+            editBoard[row][column] = "x";
+        }
+		setBoard(editBoard);
+
+	}		
+
+	useEffect(() => {
+		setBoard(board);
+	}, [board]);
 
 	return (
 		<div className="container">
@@ -61,7 +78,7 @@ const App = () => {
 				</div> 
 				: null 
 			}
-			<BoardComponent boardSize={boardSize} board={board}/>
+			<BoardComponent boardSize={boardSize} board={board} squareClick={squareClick}/>
 		</div>
 	);
 }
