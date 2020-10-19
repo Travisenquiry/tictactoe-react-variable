@@ -10,7 +10,7 @@ const NameComponent = (props) => {
     return (
         <div className="name-input-div">
             Enter name for {player}
-            <input className={playerClass}></input>
+            <input className={playerClass} onChange={props.nameOnChangeFunction}></input>
         </div>
     )
 }
