@@ -8,7 +8,7 @@ const BoardComponent = (props) => {
         // make each column
             return (
                 <span className="col" key={colIndex}>
-                [ {col} ]
+                [ {col} ] <ln />
                 </span>
             );
         });
@@ -16,6 +16,7 @@ const BoardComponent = (props) => {
         return (
           <div key={rowIndex} className="row">
             {rows}
+            <br />
           </div>
         );
     });

@@ -31,7 +31,7 @@ const App = () => {
 		    //Creates the array required for the board based on the size declared
 			let boardTemp = [];
 			let boardRow = [];
-			let boardCol = " ";
+			let boardCol = "-";
 			
 			//Pushes and create the board based on the board size input
 			//Prevents the user from choosing size less than 2 and more than 9
