@@ -39,23 +39,24 @@ const App = () => {
 				for(let i=0; i<boardSize; i++) {
 					boardRow.push(boardCol);
 				}
+				let boardNewRow = [...boardRow];
 				for(let i=0; i<boardSize; i++) {
-					boardTemp.push(boardRow);
+					boardTemp.push(boardNewRow);
 				}
 			}
 		setBoard(boardTemp);
-		console.log(board);
 	}
 
 	const squareClick = (column, row) => {
-        console.log( column, row );
-        let editBoard = board;
+		console.log( column, row );
+        let editBoard = [...board];
         if(editBoard[row][column] === "-" || editBoard[row][column] === "x"){
             editBoard[row][column] = "o";
         }else if(editBoard[row][column] === "o"){
             editBoard[row][column] = "x";
         }
 		setBoard(editBoard);
+		console.log(board);
 
 	}		
 

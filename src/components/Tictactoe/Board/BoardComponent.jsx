@@ -18,7 +18,6 @@ const BoardComponent = (props) => {
         return (
           <div key={rowIndex} className="row">
             {rows}
-            <br />
           </div>
         );
     });
