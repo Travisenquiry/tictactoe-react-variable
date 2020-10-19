@@ -4,7 +4,7 @@ import './GameStartComponent.css';
 const GameStartComponent = (props) => {
     return (
         <div className="game-start-div">
-           <button>Game Start</button>
+           <button onClick={props.startGameFunction}>Game Start</button>
         </div>
     )
 }
