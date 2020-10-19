@@ -7,6 +7,7 @@ const App = () => {
   return (
     <div className="container">
       <NameComponent playerIndex="1"/>
+      <br />
       <NameComponent playerIndex="2"/>
       <BoardComponent />
     </div>
