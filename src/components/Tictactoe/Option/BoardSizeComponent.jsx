@@ -1,11 +1,11 @@
 import React from 'react';
 import './BoardSizeComponent.css';
 
-const BoardSizeComponent = () => {
+const BoardSizeComponent = (props) => {
     return (
         <div className="board-size-input-div">
             Board Size (Enter a number)
-            <input className="board-size" defaultValue="3"></input>
+            <input className="board-size" defaultValue={props.defaultBoardSize} onChange={props.boardSizeOnChangeFunction}></input>
         </div>
     )
 }
