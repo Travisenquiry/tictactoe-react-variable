@@ -15,6 +15,9 @@ const App = () => {
 	const [boardSize, setBoardSize] = useState(3);
 	const [gameStarted, setGameStarted] = useState("no");
 
+	//Variables for the board with default value and the win state
+	const [winState, setWinState] = useState("");
+	const [board, setBoard] = useState([]);
 
 	//Input onchange function to be passed to NameComponent to set parent state for player names
 	const onChangeFunction = (setValue) => (e) => {
@@ -22,8 +25,25 @@ const App = () => {
 	}
 
 	//Game starting function to be passed to GameStartComponent to set parent state for starting game on click
-	const startGameFunction = (e) => {
+	const startGameFunction = () => {
 		setGameStarted("yes");
+
+		    //Creates the array required for the board based on the size declared
+			let boardTemp = [];
+			let boardRow = [];
+			let boardCol = " ";
+			
+			//Pushes and create the board based on the board size input
+			//Prevents the user from choosing size less than 2 and more than 9
+			if(boardSize > 2 && boardSize < 10) {
+				for(let i=0; i<boardSize; i++) {
+					boardRow.push(boardCol);
+				}
+				for(let i=0; i<boardSize; i++) {
+					boardTemp.push(boardRow);
+				}
+			}
+		setBoard(boardTemp);
 	}
 
 	return (
