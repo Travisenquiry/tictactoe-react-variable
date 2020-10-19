@@ -8,6 +8,8 @@ import BoardComponent from './components/Tictactoe/Board/BoardComponent.jsx';
 
 const App = () => {
 	//Variables defined for players (Can be modified to be any amount)
+	const [currentPlayer, setCurrentPlayer] = useState("");
+	const [currentSymbol, setCurrentSymbol] = useState("");
 	const [playerOne, setPlayerOne] = useState("");
 	const [playerTwo, setPlayerTwo] = useState("");
 	
@@ -27,33 +29,38 @@ const App = () => {
 	//Game starting function to be passed to GameStartComponent to set parent state for starting game on click
 	const startGameFunction = () => {
 		setGameStarted("yes");
-
-		    //Creates the array required for the board based on the size declared
-			let boardTemp = [];
-			let boardRow = [];
-			
-			//Pushes and create the board based on the board size input
-			//Prevents the user from choosing size less than 2 and more than 9
-			if(boardSize > 2 && boardSize < 10) {
-				for(let i=0; i<boardSize; i++) {
-					boardRow.push("-");
-				}
-				for(let i=0; i<boardSize; i++) {
-					let boardCloneRow = [...boardRow];
-					boardTemp.push(boardCloneRow);
-				}
+		setCurrentPlayer(playerOne);
+		setCurrentSymbol("o");
+		//Creates the array required for the board based on the size declared
+		let boardTemp = [];
+		let boardRow = [];
+		
+		//Pushes and create the board based on the board size input
+		//Prevents the user from choosing size less than 2 and more than 9
+		if(boardSize > 2 && boardSize < 10) {
+			for(let i=0; i<boardSize; i++) {
+				boardRow.push("-");
 			}
+			for(let i=0; i<boardSize; i++) {
+				let boardCloneRow = [...boardRow];
+				boardTemp.push(boardCloneRow);
+			}
+		}
 		setBoard(boardTemp);
 	}
 
 	//Function to be passed into BoardComponent for squares to change symbols
 	const squareClick = (column, row) => {
 		console.log( column, row );
-        let editBoard = [...board];
-        if(editBoard[row][column] === "-" || editBoard[row][column] === "x"){
-            editBoard[row][column] = "o";
-        }else if(editBoard[row][column] === "o"){
-            editBoard[row][column] = "x";
+		let editBoard = [...board];
+        if(currentPlayer === playerOne && editBoard[row][column] === "-"){
+			editBoard[row][column] = "o";
+			setCurrentPlayer(playerTwo);
+			setCurrentSymbol("x");
+        }else if(currentPlayer === playerTwo && editBoard[row][column] === "-"){
+			editBoard[row][column] = "x";
+			setCurrentPlayer(playerOne);
+			setCurrentSymbol("o");
         }
 		setBoard(editBoard);
 
@@ -74,7 +81,7 @@ const App = () => {
 				</div> 
 				: null 
 			}
-			<BoardComponent boardSize={boardSize} board={board} squareClick={squareClick}/>
+			<BoardComponent boardSize={boardSize} board={board} squareClick={squareClick} currentPlayer={currentPlayer} currentSymbol={currentSymbol} gameStarted={gameStarted}/>
 		</div>
 	);
 }

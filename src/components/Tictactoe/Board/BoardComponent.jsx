@@ -23,8 +23,12 @@ const BoardComponent = (props) => {
     });
 
     return (
+         
         <div className="board-div">
-            {board}
+            <div>
+                {props.currentPlayer}, choose a box to place an '{props.currentSymbol}' into:
+                {board}
+            </div>
         </div>
     )
 }
