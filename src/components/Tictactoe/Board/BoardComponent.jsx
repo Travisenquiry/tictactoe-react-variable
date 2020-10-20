@@ -13,7 +13,7 @@ const BoardComponent = (props) => {
                 </span>
             );
         });
-        
+
         //Returns the complete row
         return (
           <div key={rowIndex} className="row">
@@ -29,7 +29,12 @@ const BoardComponent = (props) => {
                     { props.winState === "" ?
                         <div className="current-player">
                             {props.currentPlayer}, choose a box to place an '{props.currentSymbol}' into:
-                        </div> : 
+                        </div> 
+                        : props.winState === "Draw" ?
+                        <div className="draw">
+                            {props.winState}!, no one wins.
+                        </div>
+                        :
                         <div className="winner">
                             Congratulations {props.winState}!, You have won.
                         </div>
