@@ -25,8 +25,15 @@ const BoardComponent = (props) => {
     return (
          
         <div className="board-div">
-            <div>
-                {props.currentPlayer}, choose a box to place an '{props.currentSymbol}' into:
+            { props.winState === "" ?
+                <div className="current-player">
+                    {props.currentPlayer}, choose a box to place an '{props.currentSymbol}' into:
+                </div> : 
+                <div className="winner">
+                    Congratulations {props.winState}!, You have won.
+                </div>
+            }
+            <div className="board">
                 {board}
             </div>
         </div>

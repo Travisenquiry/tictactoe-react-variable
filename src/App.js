@@ -54,8 +54,10 @@ const App = () => {
 		//Checks for win state by rows
 		for(let i=0; i<currentBoard.length; i++){
 			for(let j=0; j<currentBoard[i].length-2; j++){
-				if(currentBoard[i][j] === currentBoard[i][j+1] && currentBoard[i][j] === currentBoard[i][j+2] && currentBoard[i][j] === "x"){
-					return "x"
+				if(currentBoard[i][j] === currentBoard[i][j+1] && currentBoard[i][j] === currentBoard[i][j+2] && currentBoard[i][j] === "o"){
+					setWinState(playerOne);
+				}else if(currentBoard[i][j] === currentBoard[i][j+1] && currentBoard[i][j] === currentBoard[i][j+2] && currentBoard[i][j] === "x"){
+					setWinState(playerTwo);
 				}
 			}
 		}
@@ -75,8 +77,9 @@ const App = () => {
 			setCurrentSymbol("o");
         }
 		setBoard(editBoard);
+		calculateWinner(board);
 		console.log(board);
-		console.log(calculateWinner(board));
+		console.log(winState);
 	}
 
 
@@ -95,7 +98,7 @@ const App = () => {
 				</div> 
 				: null 
 			}
-			<BoardComponent boardSize={boardSize} board={board} squareClick={squareClick} currentPlayer={currentPlayer} currentSymbol={currentSymbol} gameStarted={gameStarted}/>
+			<BoardComponent boardSize={boardSize} board={board} squareClick={squareClick} currentPlayer={currentPlayer} currentSymbol={currentSymbol} gameStarted={gameStarted} winState={winState}/>
 		</div>
 	);
 }
