@@ -8,7 +8,7 @@ const BoardComponent = (props) => {
         const rows = row.map((col,colIndex) => {
             //Creates each column
             return (
-                <span className="col" key={colIndex} onClick={() => {props.squareClick(colIndex, rowIndex)}}>
+                <span className="col" key={colIndex} onClick={props.winState === "" ? () => {props.squareClick(colIndex, rowIndex)} : undefined}>
                 [ {col} ]
                 </span>
             );
