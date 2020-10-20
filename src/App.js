@@ -16,6 +16,7 @@ const App = () => {
 	//Variables defined for options
 	const [boardSize, setBoardSize] = useState(3);
 	const [gameStarted, setGameStarted] = useState("no");
+	const [errorMessage, setErrorMessage] = useState("");
 
 	//Variables for the board with default value and the win state
 	const [winState, setWinState] = useState("");
@@ -26,27 +27,42 @@ const App = () => {
 		setValue(e.target.value);
 	}
 
+	//Error check function on options before game start
+	const errorCheckFunction = () => {
+		//Check if names and board size are empty
+		if(playerOne === "" || playerTwo === "" || boardSize === "") {
+			setErrorMessage("Please enter all options");
+			return false;
+		}
+
+		//Resets error message to empty and return true if passes error check
+		setErrorMessage("");
+		return true;
+	}
+
 	//Game starting function to be passed to GameStartComponent to set parent state for starting game on click
 	const startGameFunction = () => {
-		setGameStarted("yes");
-		setCurrentPlayer(playerOne);
-		setCurrentSymbol("o");
-		//Creates the array required for the board based on the size declared
-		let boardTemp = [];
-		let boardRow = [];
-		
-		//Pushes and create the board based on the board size input
-		//Prevents the user from choosing size less than 2 and more than 9
-		if(boardSize > 2 && boardSize < 10) {
-			for(let i=0; i<boardSize; i++) {
-				boardRow.push("-");
+		if(errorCheckFunction() === true){
+			setGameStarted("yes");
+			setCurrentPlayer(playerOne);
+			setCurrentSymbol("o");
+			//Creates the array required for the board based on the size declared
+			let boardTemp = [];
+			let boardRow = [];
+			
+			//Pushes and create the board based on the board size input
+			//Prevents the user from choosing size less than 2 and more than 9
+			if(boardSize > 2 && boardSize < 10) {
+				for(let i=0; i<boardSize; i++) {
+					boardRow.push("-");
+				}
+				for(let i=0; i<boardSize; i++) {
+					let boardCloneRow = [...boardRow];
+					boardTemp.push(boardCloneRow);
+				}
 			}
-			for(let i=0; i<boardSize; i++) {
-				let boardCloneRow = [...boardRow];
-				boardTemp.push(boardCloneRow);
-			}
+			setBoard(boardTemp);
 		}
-		setBoard(boardTemp);
 	}
 
 	//Function to check for win state
@@ -133,10 +149,10 @@ const App = () => {
 				<BoardSizeComponent defaultBoardSize={boardSize} boardSizeOnChangeFunction={onChangeFunction(setBoardSize)}/>
 				<br />
 				<GameStartComponent startGameFunction={startGameFunction}/>
-
 				</div> 
 				: null 
 			}
+			{errorMessage}
 			<BoardComponent boardSize={boardSize} board={board} squareClick={squareClick} currentPlayer={currentPlayer} currentSymbol={currentSymbol} gameStarted={gameStarted} winState={winState}/>
 		</div>
 	);
