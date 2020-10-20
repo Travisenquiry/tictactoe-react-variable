@@ -72,6 +72,17 @@ const App = () => {
 				}
 			}
 		}
+
+		//Check for win state by diagonally downwards
+		for(let i=0; i<currentBoard.length-2; i++){
+			for(let j=0; j<currentBoard[i].length-2; j++){
+				if(currentBoard[i][j] === currentBoard[i+1][j+1] && currentBoard[i][j] === currentBoard[i+2][j+2] && currentBoard[i][j] === "o"){
+					setWinState(playerOne);
+				}else if(currentBoard[i][j] === currentBoard[i+1][j+1] && currentBoard[i][j] === currentBoard[i+2][j+2] && currentBoard[i][j] === "x"){
+					setWinState(playerTwo);
+				}
+			}
+		}
 	}
 
 	//Function to be passed into BoardComponent for squares to change symbols
