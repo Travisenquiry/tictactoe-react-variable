@@ -4,7 +4,8 @@ import './NameComponent.css';
 const NameComponent = (props) => {
     //Variable to display the player number dynamically
     let player = "Player " + props.playerIndex;
-    //Variable to pass to the class name of the input DOM for App.js to get the elemtn
+
+    //Variable to pass to the class name of the input DOM
     let playerClass = "player-" + props.playerIndex;
 
     return (

@@ -4,9 +4,9 @@ import './BoardComponent.css';
 const BoardComponent = (props) => {
     //Function to map the board state to create and render it into HTML
     const board = props.board.map((row,rowIndex) => {
-        //Creates a single row
+        //Creates the rows of the board
         const rows = row.map((col,colIndex) => {
-            //Creates each column
+            //Creates each column, removes onclick function upon detecting a win
             return (
                 <span className="col" key={colIndex} onClick={props.winState === "" ? () => {props.squareClick(colIndex, rowIndex)} : undefined}>
                 [ {col} ]

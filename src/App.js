@@ -5,29 +5,28 @@ import BoardSizeComponent from './components/Tictactoe/Option/BoardSizeComponent
 import GameStartComponent from './components/Tictactoe/Option/GameStartComponent.jsx';
 import BoardComponent from './components/Tictactoe/Board/BoardComponent.jsx';
 
-
 const App = () => {
-	//Variables defined for players (Can be modified to be any amount)
+	//Variables defined for players (Can be modified to be any amount of players)
 	const [currentPlayer, setCurrentPlayer] = useState("");
 	const [currentSymbol, setCurrentSymbol] = useState("");
 	const [playerOne, setPlayerOne] = useState("");
 	const [playerTwo, setPlayerTwo] = useState("");
 	
-	//Variables defined for options
+	//Variables defined for options and status of the game
 	const [boardSize, setBoardSize] = useState(3);
 	const [gameStarted, setGameStarted] = useState("no");
 	const [errorMessage, setErrorMessage] = useState("");
 
-	//Variables for the board with default value and the win state
+	//Variables for the board and win state
 	const [winState, setWinState] = useState("");
 	const [board, setBoard] = useState([]);
 
-	//Input onchange function to be passed to NameComponent to set parent state for player names
+	//Input onchange function to be passed to NameComponent and BoardSizeComponent to set parent state for player names and size of board
 	const onChangeFunction = (setValue) => (e) => {
 		setValue(e.target.value);
 	}
 
-	//Error check function on options before game start
+	//Error check function on options to be called upon clicking on game start button
 	const errorCheckFunction = () => {
 		//Checks if names and board size are empty
 		if(playerOne.trim() === "" || playerTwo.trim() === "" || boardSize.toString().trim() === "") {
@@ -59,7 +58,6 @@ const App = () => {
 			return false;
 		}
 
-
 		//Resets error message to empty and return true if passes error check
 		setErrorMessage("");
 		return true;
@@ -67,16 +65,18 @@ const App = () => {
 
 	//Game starting function to be passed to GameStartComponent to set parent state for starting game on click
 	const startGameFunction = () => {
+		//Conditional to check if input passes the error check
 		if(errorCheckFunction() === true){
+			//Initialization of the game
 			setGameStarted("yes");
 			setCurrentPlayer(playerOne);
 			setCurrentSymbol("o");
+
 			//Creates the array required for the board based on the size declared
 			let boardTemp = [];
 			let boardRow = [];
-			
 			//Pushes and create the board based on the board size input
-			//Prevents the user from choosing size less than 2 and more than 9
+			//Prevents the user from choosing size less than 2 and more than 9 for neatness purpose
 			if(boardSize > 2 && boardSize < 10) {
 				for(let i=0; i<boardSize; i++) {
 					boardRow.push("-");
@@ -86,13 +86,13 @@ const App = () => {
 					boardTemp.push(boardCloneRow);
 				}
 			}
+			//Sets and initialize the state of the board with the complete array
 			setBoard(boardTemp);
 		}
 	}
 
 	//Function to check for win state
 	const calculateWinner = (currentBoard) => {
-
 		//Check for draw
 		let boardClone = [...board].flat(1);
 		if(boardClone.includes("-") === false){
@@ -146,8 +146,10 @@ const App = () => {
 
 	//Function to be passed into BoardComponent for squares to change symbols
 	const squareClick = (column, row) => {
-		console.log( column, row );
+		//Clones a copy of the board state to be mutated
 		let editBoard = [...board];
+
+		//Checks which is the current player and if the square is empty
         if(currentPlayer === playerOne && editBoard[row][column] === "-"){
 			editBoard[row][column] = "o";
 			setCurrentPlayer(playerTwo);
@@ -156,13 +158,12 @@ const App = () => {
 			editBoard[row][column] = "x";
 			setCurrentPlayer(playerOne);
 			setCurrentSymbol("o");
-        }
+		}
+		
+		//Sets the board state to be the new state and calculate if there is a winner
 		setBoard(editBoard);
 		calculateWinner(board);
-		console.log(board);
-		console.log(winState);
 	}
-
 
 	return (
 		<div className="container">
