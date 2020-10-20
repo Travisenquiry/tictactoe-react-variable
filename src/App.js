@@ -29,9 +29,15 @@ const App = () => {
 
 	//Error check function on options before game start
 	const errorCheckFunction = () => {
-		//Check if names and board size are empty
+		//Checks if names and board size are empty
 		if(playerOne === "" || playerTwo === "" || boardSize === "") {
 			setErrorMessage("Please enter all options");
+			return false;
+		}
+
+		//Checks if player names are the same
+		if(playerOne === playerTwo){
+			setErrorMessage("Please enter a different name for both players");
 			return false;
 		}
 
