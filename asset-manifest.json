@@ -1,0 +1,22 @@
+{
+  "files": {
+    "main.css": "/zendesk-assessment/static/css/main.6373f2d6.chunk.css",
+    "main.js": "/zendesk-assessment/static/js/main.e0aa1389.chunk.js",
+    "main.js.map": "/zendesk-assessment/static/js/main.e0aa1389.chunk.js.map",
+    "runtime-main.js": "/zendesk-assessment/static/js/runtime-main.dea02ebb.js",
+    "runtime-main.js.map": "/zendesk-assessment/static/js/runtime-main.dea02ebb.js.map",
+    "static/js/2.70e7d301.chunk.js": "/zendesk-assessment/static/js/2.70e7d301.chunk.js",
+    "static/js/2.70e7d301.chunk.js.map": "/zendesk-assessment/static/js/2.70e7d301.chunk.js.map",
+    "index.html": "/zendesk-assessment/index.html",
+    "precache-manifest.a873cc07e41ff37e857c46ceeae42327.js": "/zendesk-assessment/precache-manifest.a873cc07e41ff37e857c46ceeae42327.js",
+    "service-worker.js": "/zendesk-assessment/service-worker.js",
+    "static/css/main.6373f2d6.chunk.css.map": "/zendesk-assessment/static/css/main.6373f2d6.chunk.css.map",
+    "static/js/2.70e7d301.chunk.js.LICENSE.txt": "/zendesk-assessment/static/js/2.70e7d301.chunk.js.LICENSE.txt"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.dea02ebb.js",
+    "static/js/2.70e7d301.chunk.js",
+    "static/css/main.6373f2d6.chunk.css",
+    "static/js/main.e0aa1389.chunk.js"
+  ]
+}
