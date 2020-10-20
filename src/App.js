@@ -94,6 +94,12 @@ const App = () => {
 				}
 			}
 		}
+
+		//Check for draw
+		let boardClone = [...board].flat(1);
+		if(boardClone.includes("-") === false){
+			setWinState("Draw");
+		}
 	}
 
 	//Function to be passed into BoardComponent for squares to change symbols
