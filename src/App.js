@@ -47,6 +47,12 @@ const App = () => {
 			return false;
 		}
 
+		//Checks if board size entered is an integer
+		if(isNaN(boardSize)){
+			setErrorMessage("Please enter a number for board size");
+			return false;
+		}
+
 		//Resets error message to empty and return true if passes error check
 		setErrorMessage("");
 		return true;
