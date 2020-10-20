@@ -92,6 +92,13 @@ const App = () => {
 
 	//Function to check for win state
 	const calculateWinner = (currentBoard) => {
+
+		//Check for draw
+		let boardClone = [...board].flat(1);
+		if(boardClone.includes("-") === false){
+			setWinState("Draw");
+		}
+
 		//Checks for win state by rows
 		for(let i=0; i<currentBoard.length; i++){
 			for(let j=0; j<currentBoard[i].length-2; j++){
@@ -135,12 +142,6 @@ const App = () => {
 				}
 			}
 		}
-
-		//Check for draw
-		let boardClone = [...board].flat(1);
-		if(boardClone.includes("-") === false){
-			setWinState("Draw");
-		}
 	}
 
 	//Function to be passed into BoardComponent for squares to change symbols
@@ -165,19 +166,24 @@ const App = () => {
 
 	return (
 		<div className="container">
+			<div className="header">
+				Tic tac toe
+			</div>
 			{ gameStarted === "no" ? 
 				<div className="options">
-				<NameComponent playerIndex="1" nameOnChangeFunction={onChangeFunction(setPlayerOne)}/>
-				<br />
-				<NameComponent playerIndex="2" nameOnChangeFunction={onChangeFunction(setPlayerTwo)}/>
-				<br />
-				<BoardSizeComponent defaultBoardSize={boardSize} boardSizeOnChangeFunction={onChangeFunction(setBoardSize)}/>
-				<br />
-				<GameStartComponent startGameFunction={startGameFunction}/>
+					<NameComponent playerIndex="1" nameOnChangeFunction={onChangeFunction(setPlayerOne)}/>
+					<br />
+					<NameComponent playerIndex="2" nameOnChangeFunction={onChangeFunction(setPlayerTwo)}/>
+					<br />
+					<BoardSizeComponent defaultBoardSize={boardSize} boardSizeOnChangeFunction={onChangeFunction(setBoardSize)}/>
+					<br />
+					<GameStartComponent startGameFunction={startGameFunction}/>
+					<div className="error-message">
+						{errorMessage}
+					</div>
 				</div> 
 				: null 
 			}
-			{errorMessage}
 			<BoardComponent boardSize={boardSize} board={board} squareClick={squareClick} currentPlayer={currentPlayer} currentSymbol={currentSymbol} gameStarted={gameStarted} winState={winState}/>
 		</div>
 	);

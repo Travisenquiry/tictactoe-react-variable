@@ -39,6 +39,7 @@ const BoardComponent = (props) => {
                             Congratulations {props.winState}!, You have won.
                         </div>
                     }
+                    <br />
                     <div className="board">
                         {board}
                     </div>
