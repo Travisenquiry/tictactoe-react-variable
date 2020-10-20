@@ -2,7 +2,6 @@ import React from 'react';
 import './BoardComponent.css';
 
 const BoardComponent = (props) => {
-
     //Function to map the board state to create and render it into HTML
     const board = props.board.map((row,rowIndex) => {
         //Creates a single row
@@ -14,6 +13,7 @@ const BoardComponent = (props) => {
                 </span>
             );
         });
+        
         //Returns the complete row
         return (
           <div key={rowIndex} className="row">
@@ -23,7 +23,6 @@ const BoardComponent = (props) => {
     });
 
     return (
-         
         <div className="board-div">
             { props.gameStarted === "yes" ?
                 <div className="instruction-display">
