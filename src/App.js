@@ -49,6 +49,18 @@ const App = () => {
 		setBoard(boardTemp);
 	}
 
+	//Function to check for win state
+	const calculateWinner = (currentBoard) => {
+		//Checks for win state by rows
+		for(let i=0; i<currentBoard.length; i++){
+			for(let j=0; j<currentBoard[i].length-2; j++){
+				if(currentBoard[i][j] === currentBoard[i][j+1] && currentBoard[i][j] === currentBoard[i][j+2] && currentBoard[i][j] === "x"){
+					return "x"
+				}
+			}
+		}
+	}
+
 	//Function to be passed into BoardComponent for squares to change symbols
 	const squareClick = (column, row) => {
 		console.log( column, row );
@@ -63,8 +75,10 @@ const App = () => {
 			setCurrentSymbol("o");
         }
 		setBoard(editBoard);
+		console.log(board);
+		console.log(calculateWinner(board));
+	}
 
-	}		
 
 	return (
 		<div className="container">
