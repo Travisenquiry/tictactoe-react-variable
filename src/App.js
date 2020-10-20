@@ -30,8 +30,14 @@ const App = () => {
 	//Error check function on options before game start
 	const errorCheckFunction = () => {
 		//Checks if names and board size are empty
-		if(playerOne === "" || playerTwo === "" || boardSize === "") {
+		if(playerOne.trim() === "" || playerTwo.trim() === "" || boardSize.toString().trim() === "") {
 			setErrorMessage("Please enter all options");
+			return false;
+		}
+
+		//Checks if names entered consists of any symbol or number
+		if(!playerOne.match(/^[A-Za-z\s]+$/) || !playerTwo.match(/^[A-Za-z\s]+$/)){
+			setErrorMessage("Only alphabets and space are allowed as names");
 			return false;
 		}
 
