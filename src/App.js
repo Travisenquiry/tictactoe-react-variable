@@ -53,6 +53,13 @@ const App = () => {
 			return false;
 		}
 
+		//Checks if board size entered is between 3 and 9
+		if (boardSize < 3 || boardSize > 9){
+			setErrorMessage("Please enter a board size between 3 and 9");
+			return false;
+		}
+
+
 		//Resets error message to empty and return true if passes error check
 		setErrorMessage("");
 		return true;
