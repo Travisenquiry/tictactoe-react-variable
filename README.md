@@ -1,6 +1,6 @@
-# **Zendesk Assessment**
+# **Tic Tac Toe ReactJS**
 
-Coding assessment for Zendesk Backend Software Engineer. Created using ReactJS.
+A Tic Tac Toe game created in ReactJS with variable board size.
 
 **Deployed Page**
 https://travisenquiry.github.io/zendesk-assessment/
